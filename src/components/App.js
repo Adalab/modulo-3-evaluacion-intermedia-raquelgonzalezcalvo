@@ -1,0 +1,32 @@
+/* SECCIÓN DE IMPORT */
+import '...styles/App.scss';
+import { useState } from 'react';
+import data from '../data/friends.json';
+
+//import useState
+
+// - De React
+// - Nuestros
+// - Sass
+import '../styles/App.scss';
+// - Imágenes
+
+/* SECCIÓN DEL COMPONENTE */
+function App() {
+  /* VARIABLES ESTADO (DATOS) */
+ const [quotes, setQuotes] = useState (data);
+
+  /* EFECTOS (día 5) */
+
+  /* FUNCIONES HANDLER */
+
+  /* FUNCIONES Y VARIABLES AUXILIARES PARA PINTAR EL HTML */
+
+  /* HTML */
+  return <div className="App">{/* Aquí va el HTML */}</div>;
+}
+
+/* PROP-TYPES */
+
+/* EXPORT DEL COMPONENTE */
+export default App;
