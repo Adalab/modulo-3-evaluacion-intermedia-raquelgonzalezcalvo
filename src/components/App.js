@@ -25,20 +25,17 @@ function App() {
   const renderData = () => {
     return data
       .filter((eachData) => {
-        //filtrando mis datos que yo ponga en el input
         return eachData.quote
           .toLocaleLowerCase()
           .includes(filterQuote.toLocaleLowerCase());
       })
       .filter((eachData) => {
         if (filterCharacter !== "todos") {
-          //pongo un personaje y me saca el seleccionado
           return (
             eachData.character.toLocaleLowerCase() ===
             filterCharacter.toLocaleLowerCase()
           );
         } else {
-          //le doy a todos y me siguen apareciendo mis datos
           return eachData;
         }
       })
