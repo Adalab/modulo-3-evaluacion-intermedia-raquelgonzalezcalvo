@@ -1,67 +1,80 @@
 /* SECCIÓN DE IMPORT */
 // import '...styles/App.scss';
-import { useState } from 'react';
-import data from '../data/friends.json';
-
-//import useState
-
-// - De React
-// - Nuestros
-// - Sass
-import '../styles/App.scss';
-// - Imágenes
+import { useState } from "react";
+import data from "../data/friends.json";
+import "../styles/App.scss";
 
 /* SECCIÓN DEL COMPONENTE */
-function App() { 
+function App() {
   /* VARIABLES ESTADO (DATOS) */
- const [quotes, setQuotes] = useState (data);
- console.log(data);
-const [filterQuote, setFilterQuote] = useState('');
-const [filterCharacter, setFilterCharacter] = useState ('todos');
+  // const [quotes, setQuotes] = useState(data);
+
+  const [filterQuote, setFilterQuote] = useState("");
+  const [filterCharacter, setFilterCharacter] = useState("todos");
   /* EFECTOS (día 5) */
 
   /* FUNCIONES HANDLER */
-const handleQuoteFilter = (ev) => {
-  setFilterQuote(ev.target.value)
-}
-const handleCharacterFilter = (ev) => {
-  setFilterCharacter(ev.target.value)
-}
+  const handleQuoteFilter = (ev) => {
+    setFilterQuote(ev.target.value);
+  };
+  const handleCharacterFilter = (ev) => {
+    setFilterCharacter(ev.target.value);
+  };
 
   /* FUNCIONES Y VARIABLES AUXILIARES PARA PINTAR EL HTML */
-const renderData = () => {
+  const renderData = () => {
     return data
-  .filter((eachData) => {
-      return (eachData.quote.toLocaleLowerCase().includes(filterQuote.toLocaleLowerCase()))
-    })
-  .filter((eachData) => {
-  if(filterCharacter !== 'todos') {
-    return (eachData.character.toLocaleLowerCase()===(filterCharacter.toLocaleLowerCase()))
-  }else{
-    return eachData;
-    }
-  })
-  .map((eachData, i) => (
-    <li className='li' key={i}>
-      <p className='li-quote'>{eachData.quote}</p>
-      <p className='li-quote'>{eachData.character}</p>
-    </li>
-  ))
-  }
+      .filter((eachData) => {
+        //filtrando mis datos que yo ponga en el input
+        return eachData.quote
+          .toLocaleLowerCase()
+          .includes(filterQuote.toLocaleLowerCase());
+      })
+      .filter((eachData) => {
+        if (filterCharacter !== "todos") {
+          //pongo un personaje y me saca el seleccionado
+          return (
+            eachData.character.toLocaleLowerCase() ===
+            filterCharacter.toLocaleLowerCase()
+          );
+        } else {
+          //le doy a todos y me siguen apareciendo mis datos
+          return eachData;
+        }
+      })
+      .map((eachData, i) => (
+        <li className="li" key={i}>
+          <p className="li-quote">{eachData.quote}</p>
+          <p className="li-quote">{eachData.character}</p>
+        </li>
+      ));
+  };
 
   /* HTML */
-  return <div className="App"> 
-    
-    <header className="header">
+  return (
+    <div className="App">
+      <header className="header">
         <h1>Frases de Friends</h1>
       </header>
       <main className="main">
         <section className="search">
           <form action="">
             <label htmlFor="phrases">Filtrar por frase</label>
-            <input type="text" name="phrases" id="phrases" placeholder='Ej:Introduce una palabra' value={filterQuote} onChange={handleQuoteFilter} />
+            <input
+              type="text"
+              name="phrases"
+              id="phrases"
+              placeholder="Ej:Introduce una palabra"
+              value={filterQuote}
+              onChange={handleQuoteFilter}
+            />
             <label htmlFor="character">Filtrar por personaje:</label>
-            <select name="character" id="character" onChange= {handleCharacterFilter} >
+            <select
+              name="character"
+              id="character"
+              value={filterCharacter}
+              onChange={handleCharacterFilter}
+            >
               <option value="todos">Todos</option>
               <option value="Ross">Ross</option>
               <option value="Monica">Monica</option>
@@ -72,18 +85,11 @@ const renderData = () => {
             </select>
           </form>
         </section>
-        </main>
-        <ul>
-          {renderData()}
-        </ul>
-        </div>
-
-        
-    }
-    
-    
-    
-
+      </main>
+      <ul>{renderData()}</ul>
+    </div>
+  );
+}
 
 /* PROP-TYPES */
 
