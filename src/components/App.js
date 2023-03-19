@@ -1,7 +1,5 @@
 /* SECCIÓN DE IMPORT */
-// import '...styles/App.scss';
 import { useState, useEffect } from "react";
-// import data from "../data/friends.json";
 import "../styles/App.scss";
 
 /* SECCIÓN DEL COMPONENTE */
@@ -39,7 +37,7 @@ function App() {
   const handleClick = (ev) => {
     ev.preventDefault();
     setQuotes([...quotes, newPhrase]);
-    setNewPhrase({ quotes: "", character: "" });
+    setNewPhrase({ quote: "", character: "" });
   };
 
   /* FUNCIONES Y VARIABLES AUXILIARES PARA PINTAR EL HTML */
@@ -76,20 +74,21 @@ function App() {
       </header>
       <main className="main">
         <section className="search">
-          <form action="">
-            <label htmlFor="phrases">Filtrar por frase</label>
+          <form className="form">
+            <label htmlFor="phrases-filter">Filtrar por frase</label>
             <input
+              className="input-filter"
               type="text"
-              name="phrases"
-              id="phrases"
+              name="phrases-filter"
+              id="phrases-filter"
               placeholder="Ej:Introduce una palabra"
               value={filterQuote}
               onChange={handleQuoteFilter}
             />
-            <label htmlFor="character">Filtrar por personaje:</label>
+            <label htmlFor="character-filter">Filtrar por personaje:</label>
             <select
-              name="character"
-              id="character"
+              name="character-filter"
+              id="character-filter"
               value={filterCharacter}
               onChange={handleCharacterFilter}
             >
@@ -104,18 +103,19 @@ function App() {
           </form>
         </section>
         <section className="newPhrase">
-          <h2>Añadir una nueva frase</h2>
-          <form action="">
-            <label htmlFor="phrases">Frase</label>
+          <form className="form-new">
+            <label htmlFor="quote">Frase</label>
             <input
+              className="input-new"
               type="text"
-              name="phrases"
-              id="phrases"
+              name="quote"
+              id="quote"
               onChange={handleNewPhrase}
               value={newPhrase.quote}
             />
             <label htmlFor="character">Personaje</label>
             <input
+              className="input-new"
               type="text"
               name="character"
               id="character"
@@ -123,6 +123,7 @@ function App() {
               value={newPhrase.character}
             />
             <input
+              className="input-phrase"
               type="submit"
               value="Añadir nueva frase"
               onClick={handleClick}

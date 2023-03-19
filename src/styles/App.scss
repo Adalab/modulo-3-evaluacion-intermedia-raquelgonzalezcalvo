@@ -1,2 +1,62 @@
 /* Aquí van tus estilos */
 @import "core/reset";
+
+.App {
+  display: flex;
+  justify-content: column;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  height: 100vw;
+  background-image: url("../styles/images/friends.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.header {
+  font-size: 40px;
+  padding: 30px;
+  padding-top: 50px;
+  color: rgba(255, 255, 0, 0.605);
+}
+.search {
+  padding: 20px;
+  font-size: 20px;
+  border: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.725);
+}
+.form {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.form-new {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.725);
+}
+.li {
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.779);
+  border: white;
+  padding: 20px;
+  margin: 20px;
+}
+.input-filter {
+  height: 25px;
+  width: 200px;
+}
+.input-new {
+  margin: 20px;
+  height: 20px;
+}
+.input-phrase {
+  margin: 20px;
+  height: 30px;
+}
